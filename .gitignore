@@ -1,0 +1,6 @@
+# Project exclude paths
+/target/
+/.idea
+/CucumberProjectLessonCourse_7_28.iml/
+/.DS_Store/
+
