@@ -93,6 +93,11 @@ public class CommonMethods extends PageInitializer {
         js.executeScript("window.scrollBy(0," + pixel + ")");
     }
 
+    public static void scrollUpSecond(int pixel) {
+        JavascriptExecutor js = (JavascriptExecutor) MyDriver.get();
+        js.executeScript("window.scrollBy(0,-" + pixel + ")");
+    }
+
     public static void scrollUp(WebElement element, int pixel) {
         JavascriptExecutor js = (JavascriptExecutor) MyDriver.get();
         js.executeScript("window.scrollBy(0,-" + pixel + ")");
@@ -351,6 +356,12 @@ public class CommonMethods extends PageInitializer {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void jsClickWithWaitForVisibility(WebElement element) {
+        getWaitObject().until(ExpectedConditions.visibilityOf(element));
+        JavascriptExecutor js = (JavascriptExecutor) MyDriver.get();
+        js.executeScript("arguments[0].click();", element);
     }
 
 }

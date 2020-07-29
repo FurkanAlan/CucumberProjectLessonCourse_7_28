@@ -1,5 +1,6 @@
 package com.lessonCourse.stepDefinitions;
 
+import com.lessonCourse.utilities.CommonMethods;
 import com.lessonCourse.utilities.ConfigurationReader;
 import com.lessonCourse.utilities.MyDriver;
 import io.cucumber.core.api.Scenario;
@@ -9,11 +10,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 
-public class Hooks  {
+public class Hooks   {
 
     @Before
 
-    public void setup() {
+    public void setup(){
 
         System.out.println("#### setup! start d######\n");
 
