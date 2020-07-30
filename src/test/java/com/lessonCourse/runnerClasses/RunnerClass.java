@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features"
 
-        , glue = "com/com.lessonCourse/stepDefinitions"
+        , glue = "com/lessonCourse/stepDefinitions"
 
         //ikinci metod
 //        features = "classpath:features"
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         , dryRun = false
         , plugin = {"pretty", "html:target/html/cucumber-default", "json:target/cucumber.json", "rerun:target/failed.txt"}
 //        , monochrome = true
-//        , tags = {"@smoke"}
+      , tags = {"@vahid"}
 )
 
 public class RunnerClass {

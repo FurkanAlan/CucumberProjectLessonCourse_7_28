@@ -1,11 +1,11 @@
 package com.lessonCourse.utilities;
 
-import com.lessonCourse.pages.DashBoard_Alan;
+import com.lessonCourse.Pages.VahidPages;
 
 public class PageInitializer extends MyDriver {
-    public static DashBoard_Alan dashBoardAlan;
+    public static VahidPages pageFactory;
 
     public static void initializeAllPages() {
-        dashBoardAlan = new DashBoard_Alan();
+        pageFactory = new VahidPages();
     }
 }

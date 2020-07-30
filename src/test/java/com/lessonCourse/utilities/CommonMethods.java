@@ -352,5 +352,10 @@ public class CommonMethods extends PageInitializer {
             e.printStackTrace();
         }
     }
+    public static void jsClickWithWaitForVisibility(WebElement element) {
+        getWaitObject().until(ExpectedConditions.visibilityOf(element));
+        JavascriptExecutor js = (JavascriptExecutor) MyDriver.get();
+        js.executeScript("arguments[0].click();", element);
+    }
 
 }
