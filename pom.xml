@@ -93,89 +93,250 @@
 
     </dependencies>
 
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+    <!--                <version>3.0.0-M4</version>-->
+    <!--                <configuration>-->
+    <!--                    <includes>-->
+    <!--                        <include>**/*Runner*.java</include>-->
+    <!--                    </includes>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+
+    <!--            <plugin>-->
+    <!--                <groupId>net.masterthought</groupId>-->
+    <!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+    <!--                <version>5.0.0</version>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <id>execution</id>-->
+    <!--                        <phase>test</phase>-->
+    <!--                        <goals>-->
+    <!--                            <goal>generate</goal>-->
+    <!--                        </goals>-->
+    <!--                        <configuration>-->
+    <!--                            <projectName>LessonCourse</projectName>-->
+    <!--                            &lt;!&ndash; output directory for the generated report &ndash;&gt;-->
+    <!--                            <outputDirectory>${project.build.directory}</outputDirectory>-->
+    <!--                            &lt;!&ndash; optional, defaults to outputDirectory if not specified &ndash;&gt;-->
+    <!--                            <inputDirectory>${project.build.directory}</inputDirectory>-->
+    <!--                            <jsonFiles>-->
+    <!--                                &lt;!&ndash; supports wildcard or name pattern &ndash;&gt;-->
+    <!--                                <param>**/*.json</param>-->
+    <!--                            </jsonFiles>-->
+
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-compiler-plugin</artifactId>-->
+    <!--                <configuration>-->
+    <!--                    <source>7</source>-->
+    <!--                    <target>7</target>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+
+
+    <!--    <profiles>-->
+    <!--        <profile>-->
+    <!--            <id>ParallelRunner</id>-->
+    <!--            <build>-->
+    <!--                <plugins>-->
+    <!--                    <plugin>-->
+    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                        <artifactId>maven-compiler-plugin</artifactId>-->
+    <!--                        <version>3.8.1</version>-->
+    <!--                        <configuration>-->
+    <!--                            <source>8</source>-->
+    <!--                            <source>8</source>-->
+    <!--                        </configuration>-->
+    <!--                    </plugin>-->
+    <!--                    <plugin>-->
+    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                        <artifactId>maven-surefire-plugin</artifactId>-->
+    <!--                        <version>3.0.0-M4</version>-->
+    <!--                        &lt;!&ndash;                for paralelel Cucumber running&ndash;&gt;-->
+    <!--                        <configuration>-->
+    <!--&lt;!&ndash;                            method demek feature dosylarina tekabul ediyo &ndash;&gt;-->
+    <!--&lt;!&ndash;                            class olsaydi , runner i aliyor&ndash;&gt;-->
+    <!--                            <parallel>method</parallel>-->
+    <!--                            <threadCount>5</threadCount>-->
+    <!--                            &lt;!&ndash;                    <useUnlimitedThreads>true</useUnlimitedThreads>&ndash;&gt;-->
+    <!--                            <includes>-->
+    <!--                                <include>**/*ParallelRunner*.java</include>-->
+    <!--                                <testFailureIgnore>true</testFailureIgnore>-->
+    <!--                            </includes>-->
+    <!--                        </configuration>-->
+    <!--                    </plugin>-->
+    <!--                </plugins>-->
+    <!--            </build>-->
+
+    <!--        </profile>-->
+    <!--    </profiles>-->
+
+
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            &lt;!&ndash;-->
+    <!--            Provides pretty html reports for Cucumber. It first parses (reads) the cucumber.json file and-->
+    <!--            then generates nice HTML report. Along with masterthought maven-surefire-plugin is also required to create HTML reports-->
+    <!--            They work together.-->
+    <!--            &ndash;&gt;-->
+    <!--            <plugin>-->
+    <!--                <groupId>net.masterthought</groupId>-->
+    <!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+    <!--                <version>3.5.0</version>-->
+    <!--                <executions>-->
+    <!--                    &lt;!&ndash;  There can be many executions and each one has an ID. This particular one is "test-execution" &ndash;&gt;-->
+    <!--                    <execution>-->
+    <!--                        <id>test-execution</id>-->
+    <!--                        &lt;!&ndash; Generate reports when ran by this "mvn verify" command if ran by "mvn test" reports won't be generated &ndash;&gt;-->
+    <!--                        <phase>verify</phase>-->
+    <!--                        &lt;!&ndash; Defines how build phases are carried out. Usually goal is set to "generate" &ndash;&gt;-->
+    <!--                        <goals>-->
+    <!--                            <goal>generate</goal>-->
+    <!--                        </goals>-->
+    <!--                        &lt;!&ndash;  Set project name, and where the reports should ba generated  &ndash;&gt;-->
+    <!--                        <configuration>-->
+    <!--                            <projectName>${project.artifactId}</projectName>-->
+    <!--                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>-->
+    <!--                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>-->
+    <!--                        </configuration>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--            &lt;!&ndash;-->
+    <!--             The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application.-->
+    <!--             It generates reports in two different file formats: Plain text files (.txt) and XML files (.xml)-->
+    <!--             By default, these files are generated in ${basedir}/target/surefire-reports/TEST-*.xml.-->
+    <!--             We can also configure it to ignore failed tests so that maven build can success-->
+    <!--             Surefire plugin is also used to sequence tests and run tests in parallel.-->
+    <!--             &ndash;&gt;-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+    <!--                <version>2.22.2</version>-->
+    <!--                &lt;!&ndash;-->
+    <!--                Maven build fill fail if a test fails and won't generate a report. Configuring as below so that maven build does-->
+    <!--                not fail when a test fails-->
+    <!--                &ndash;&gt;-->
+    <!--                <configuration>-->
+    <!--                    <testFailureIgnore>true</testFailureIgnore>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--            &lt;!&ndash; Default cucumber plugin that prevents IDE from switching to lower versions of java or maven &ndash;&gt;-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                <artifactId>maven-compiler-plugin</artifactId>-->
+    <!--                <version>3.7.0</version>-->
+    <!--                <configuration>-->
+    <!--                    <encoding>UTF-8</encoding>-->
+    <!--                    <source>8</source>-->
+    <!--                    <target>8</target>-->
+    <!--                </configuration>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M4</version>
+                <version>3.0.0-M3</version>
                 <configuration>
+                    <runOrder>Alphabetical</runOrder>
                     <includes>
                         <include>**/*Runner*.java</include>
                     </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
+
+                    <parallel>methods</parallel>
+                    <threadCount>2</threadCount>
+
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.0.0</version>
+                <version>4.9.0</version>
                 <executions>
                     <execution>
                         <id>execution</id>
-                        <phase>test</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>LessonCourse</projectName>
-                            <!-- output directory for the generated report -->
+                            <projectName>${project.build.directory}</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <!-- optional, defaults to outputDirectory if not specified -->
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
-                                <!-- supports wildcard or name pattern -->
-                                <param>**/*.json</param>
+                                <param>*/cucumber.json</param>
                             </jsonFiles>
-
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
                 <configuration>
-                    <source>7</source>
-                    <target>7</target>
+                    <encoding>UTF-8</encoding>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
-
     <profiles>
         <profile>
-            <id>ParallelRunner</id>
+            <id>CukesRunner</id>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M3</version>
                         <configuration>
-                            <source>8</source>
-                            <source>8</source>
+                            <parallel>methods</parallel>
+                            <perCoreThreadCount>false</perCoreThreadCount>
+                            <threadCountMethods>3</threadCountMethods>
+                            <includes>
+                                <include>**/CukesRunner.java</include>
+                                <!--                                <include>**/FailedRunner.java</include>-->
+                            </includes>
+                            <testFailureIgnore>false</testFailureIgnore>
                         </configuration>
                     </plugin>
+
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M4</version>
-                        <!--                for paralelel Cucumber running-->
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.7.0</version>
                         <configuration>
-                            <parallel>method</parallel>
-                            <threadCount>5</threadCount>
-                            <!--                    <useUnlimitedThreads>true</useUnlimitedThreads>-->
-                            <includes>
-                                <include>**/*ParallelRunner*.java</include>
-                                <testFailureIgnore>true</testFailureIgnore>
-                            </includes>
+                            <encoding>UTF-8</encoding>
+                            <source>8</source>
+                            <target>8</target>
                         </configuration>
                     </plugin>
+
                 </plugins>
             </build>
-
         </profile>
     </profiles>
 

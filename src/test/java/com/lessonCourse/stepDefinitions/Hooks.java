@@ -10,16 +10,17 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 
-public class Hooks   {
+public class Hooks extends CommonMethods {
 
     @Before
 
-    public void setup(){
+    public void setup() {
 
         System.out.println("#### setup! start d######\n");
 
         MyDriver.get().manage().window().maximize();
         MyDriver.get().get(ConfigurationReader.getProperty("Url"));
+        initializeAllPages();
     }
 
     @After

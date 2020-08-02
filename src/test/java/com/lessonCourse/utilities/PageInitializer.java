@@ -1,12 +1,15 @@
 package com.lessonCourse.utilities;
 
 
-import com.lessonCourse.pages.InstructorPage_furkan;
+import com.lessonCourse.pages.InstructorPage_Furkan;
+import com.lessonCourse.pages.InstructorPage_Turker;
 
 public class PageInitializer extends MyDriver {
-    public static InstructorPage_furkan instructorPage_furkan;
+    public static InstructorPage_Furkan iPageFurkan;
+    public static InstructorPage_Turker iPageTurker;
 
     public static void initializeAllPages() {
-        instructorPage_furkan = new InstructorPage_furkan();
+        iPageFurkan = new InstructorPage_Furkan();
+        iPageTurker = new InstructorPage_Turker();
     }
 }
